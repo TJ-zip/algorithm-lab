@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Algorithm Lab</title>
+  <meta name="description" content="Interactive sorting visualizer, A* pathfinder and Game of Life. Zero dependencies.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="eyebrow">Copilot Skills Showcase</p>
+      <h1>Algorithm Lab</h1>
+      <p class="lede">Three classic algorithms, rendered live in plain HTML, CSS and JavaScript. No frameworks, no build step.</p>
+      <nav class="tabs" role="tablist" aria-label="Demos">
+        <button type="button" role="tab" aria-selected="true" data-tab="sort">Sorting</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="path">A* Pathfinder</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="life">Game of Life</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="sort" class="panel" role="tabpanel">
+      <div class="controls">
+        <label>Algorithm
+          <select id="sortAlgo">
+            <option value="bubble">Bubble sort — O(n²)</option>
+            <option value="insertion">Insertion sort — O(n²)</option>
+            <option value="merge" selected>Merge sort — O(n log n)</option>
+            <option value="quick">Quick sort — O(n log n) avg</option>
+          </select>
+        </label>
+        <label>Size <input id="sortSize" type="range" min="10" max="120" value="60"></label>
+        <label>Speed <input id="sortSpeed" type="range" min="1" max="100" value="70"></label>
+        <button type="button" id="sortShuffle">Shuffle</button>
+        <button type="button" id="sortRun" class="primary">Run</button>
+      </div>
+      <canvas id="sortCanvas" width="960" height="360" aria-label="Sorting visualization"></canvas>
+      <p class="stats" id="sortStats" aria-live="polite">Comparisons: 0 · Writes: 0</p>
+    </section>
+
+    <section id="path" class="panel" role="tabpanel" hidden>
+      <div class="controls">
+        <span class="hint">Click or drag on the grid to draw walls.</span>
+        <button type="button" id="pathMaze">Random walls</button>
+        <button type="button" id="pathClear">Clear</button>
+        <button type="button" id="pathRun" class="primary">Find path</button>
+      </div>
+      <canvas id="pathCanvas" width="960" height="480" aria-label="Pathfinding grid"></canvas>
+      <p class="stats" id="pathStats" aria-live="polite">Start: top-left · Goal: bottom-right</p>
+    </section>
+
+    <section id="life" class="panel" role="tabpanel" hidden>
+      <div class="controls">
+        <span class="hint">Click cells to toggle them.</span>
+        <button type="button" id="lifeRandom">Randomize</button>
+        <button type="button" id="lifeGlider">Glider gun</button>
+        <button type="button" id="lifeStep">Step</button>
+        <button type="button" id="lifeToggle" class="primary">Play</button>
+      </div>
+      <canvas id="lifeCanvas" width="960" height="480" aria-label="Game of Life grid"></canvas>
+      <p class="stats" id="lifeStats" aria-live="polite">Generation 0 · Alive 0</p>
+    </section>
+  </main>
+
+  <footer class="wrap foot">Built end-to-end by Microsoft Copilot · Python twin of every algorithm lives in <code>toolkit/</code> with tests in CI.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
